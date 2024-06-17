@@ -13,7 +13,7 @@ public class Program {
             timer.advance();
 
             try {
-                Thread.sleep(10);
+                Thread.sleep(12);
             } catch (Exception e) {
 
             }
