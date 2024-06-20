@@ -22,12 +22,12 @@ public class Song {
             return true;
         }
 
-        // if the compared object is not of type Person, the objects are not equal
+        // if the compared object is not of type Song, the objects are not equal
         if (!(compared instanceof Song)) {
             return false;
         }
 
-        // convert the object into a Person object
+        // convert the object into a Song object
         Song comparedPerson = (Song) compared;
 
         // if the values of the object variables are equal, the objects are equal
