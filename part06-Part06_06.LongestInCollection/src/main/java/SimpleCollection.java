@@ -18,5 +18,22 @@ public class SimpleCollection {
     public ArrayList<String> getElements() {
         return this.elements;
     }
+    
+    public String longest() {
+        if(this.elements.isEmpty()) {
+            return null;
+        }
+        
+        String tallestPerson = this.elements.get(0);
+        
+        for(String prs: this.elements) {
+            
+            if(tallestPerson.length() < prs.length()) {
+                tallestPerson = prs;
+            }
+        }
+        
+        return tallestPerson;
+    }
 
 }
