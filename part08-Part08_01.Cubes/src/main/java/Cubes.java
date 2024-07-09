@@ -7,13 +7,13 @@ public class Cubes {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            String word = scanner.nextLine();
+            String string = scanner.nextLine();
 
-            if (word.equals("end")) {
+            if (string.equals("end")) {
                 break;
             }
 
-            int number = Integer.valueOf(word);
+            int number = Integer.valueOf(string);
             System.out.println(number * number * number);
         }
     }
