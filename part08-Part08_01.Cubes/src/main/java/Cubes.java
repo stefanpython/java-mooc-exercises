@@ -12,6 +12,7 @@ public class Cubes {
             if (string.equals("end")) {
                 break;
             }
+            
 
             int number = Integer.valueOf(string);
             System.out.println(number * number * number);
