@@ -15,18 +15,10 @@ public class Program {
     }
 
     public static void printKeysWhere(HashMap<String, String> hashmap, String text) {
-        ArrayList<String> list = new ArrayList<>();
-        
-        for(String key: hashmap.keySet()) {
-            if(!key.contains(text)) {
-                continue;
+        for (String key : hashmap.keySet()) {
+            if (key.contains(text)) {
+                System.out.println(key);
             }
-            
-            list.add(key);
-        }
-        
-        for(String item: list) {
-            System.out.println(item);
         }
     }
     
