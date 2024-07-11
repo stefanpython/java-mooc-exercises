@@ -9,7 +9,7 @@ public class Program {
     
     public static void printValues(HashMap<String, Book> hashmap) {
         for(Book book: hashmap.values()){
-            System.out.println(book);
+            System.out.println(book.toString());
         }
     }
     
