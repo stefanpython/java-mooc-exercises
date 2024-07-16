@@ -1,13 +1,13 @@
 public class Teacher extends Person {
-    private int salary;
+    private int earnings;
     
     public Teacher(String name, String address, int salary) {
         super(name, address);
-        this.salary = salary;
+        this.earnings = salary;
     }
     
     @Override
     public String toString() {
-        return super.toString() + "\n  salary " + salary + " euro/month";
+        return super.toString() + "\n  salary " + earnings + " euro/month";
     }
 }
