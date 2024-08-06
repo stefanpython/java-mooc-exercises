@@ -1,6 +1,4 @@
-
-
-public class Card {
+public class Card implements Comparable<Card> {
 
     private int value;
     private Suit suit;
@@ -9,15 +7,14 @@ public class Card {
         if (value < 2 || value > 14) {
             throw new IllegalArgumentException("Card value must be in range 2...14.");
         }
-
         this.value = value;
         this.suit = suit;
     }
 
     @Override
     public String toString() {
-        String cardValue = "" + value;
-        if(value == 11) {
+        String cardValue = String.valueOf(value);
+        if (value == 11) {
             cardValue = "J";
         } else if (value == 12) {
             cardValue = "Q";
@@ -26,7 +23,6 @@ public class Card {
         } else if (value == 14) {
             cardValue = "A";
         }
-        
         return suit + " " + cardValue;
     }
 
@@ -38,4 +34,11 @@ public class Card {
         return suit;
     }
 
+    @Override
+    public int compareTo(Card other) {
+        if (this.value != other.value) {
+            return Integer.compare(this.value, other.value);
+        }
+        return Integer.compare(this.suit.ordinal(), other.suit.ordinal());
+    }
 }
