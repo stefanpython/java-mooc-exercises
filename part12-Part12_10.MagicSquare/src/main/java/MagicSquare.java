@@ -17,18 +17,64 @@ public class MagicSquare {
 
     // implement these three methods
     public ArrayList<Integer> sumsOfRows() {
-        return new ArrayList<>();
+        ArrayList<Integer> sumList = new ArrayList<>();
+
+        for (int row = 0; row < this.square.length; row++) {
+            int rowSum = 0;
+
+            for (int col = 0; col < this.square[row].length; col++) {
+                rowSum += this.square[row][col];
+            }
+
+            sumList.add(rowSum);
+        }
+
+        return sumList;
     }
 
     public ArrayList<Integer> sumsOfColumns() {
-        return new ArrayList<>();
+        ArrayList<Integer> sumList = new ArrayList<>();
+
+        // Loop through each column index
+        for (int col = 0; col < this.square[0].length; col++) {
+            int colSum = 0;
+
+            // Loop through each row in the current column and add the values
+            for (int row = 0; row < this.square.length; row++) {
+                colSum += this.square[row][col];
+            }
+
+            // Add the sum of the current column to the sumList
+            sumList.add(colSum);
+        }
+
+        return sumList;
     }
 
     public ArrayList<Integer> sumsOfDiagonals() {
-        return new ArrayList<>();
-    }
+        ArrayList<Integer> sumList = new ArrayList<>();
 
-    // ready-made helper methods -- don't touch these
+        int primaryDiagonalSum = 0;
+        int secondaryDiagonalSum = 0;
+
+        for (int i = 0; i < this.square.length; i++) {
+            // Summing the primary diagonal (top-left to bottom-right)
+            primaryDiagonalSum += this.square[i][i];
+
+            // Summing the secondary diagonal (top-right to bottom-left)
+            secondaryDiagonalSum += this.square[i][this.square.length - 1 - i];
+        }
+
+        // Add the sums to the list
+        sumList.add(primaryDiagonalSum);
+        sumList.add(secondaryDiagonalSum);
+
+        return sumList;
+    }
+    
+    
+
+// ready-made helper methods -- don't touch these
     public boolean isMagicSquare() {
         return sumsAreSame() && allNumbersDifferent();
     }
@@ -112,5 +158,40 @@ public class MagicSquare {
         }
 
         return result.toString();
+    }
+    
+    public MagicSquare createMagicSquare(int size) {
+        MagicSquare magicSquare = new MagicSquare(size);
+        int n = size;
+        int number = 1;
+        
+        // Start position: middle of the top row
+        int row = 0;
+        int col = n / 2;
+
+        while (number <= n * n) {
+            // Place the current number
+            magicSquare.placeValue(col, row, number);
+
+            // Move to the next position (up one row and right one column)
+            int newRow = (row - 1 + n) % n;
+            int newCol = (col + 1) % n;
+
+            // Check if the next position is already occupied
+            if (magicSquare.readValue(newCol, newRow) != 0) {
+                // If the cell is occupied, move down one row from the original position
+                newRow = (row + 1) % n;
+                newCol = col;
+            }
+
+            // Update row and column to the new position
+            row = newRow;
+            col = newCol;
+
+            // Increment the number to place
+            number++;
+        }
+
+        return magicSquare;
     }
 }
