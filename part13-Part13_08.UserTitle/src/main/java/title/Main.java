@@ -8,12 +8,12 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
-          System.out.println("Enter title:");
+          System.out.println("Enter title: ");
           
           String title = scanner.nextLine();
         
         Application.launch(UserTitle.class,
-                "--title=" + title
+                title
         );
     }
 
