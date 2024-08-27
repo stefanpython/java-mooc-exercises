@@ -54,7 +54,7 @@ public class MultipleViews extends Application {
 
         // Initial Scene
         window.setScene(firstScene);
-        window.setTitle("Multiple Views Application");
+        window.setTitle("Multiple Views App");
         window.show();
     }
 
