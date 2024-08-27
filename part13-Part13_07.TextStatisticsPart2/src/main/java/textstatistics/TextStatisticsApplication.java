@@ -20,7 +20,7 @@ public class TextStatisticsApplication extends Application {
     @Override
     public void start(Stage window) {
         BorderPane layout = new BorderPane();
-        Label lettersLabel = new Label("Letters: 0");
+        Label lettersLabel = new Label("Letters: 0 ");
         Label wordsLabel = new Label("Words: 0");
         Label longestLabel = new Label("The longest word is: ");
         TextArea inputArea = new TextArea("");
