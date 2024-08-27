@@ -22,11 +22,9 @@ public class NotifierApplication extends Application {
         Label outputBox = new Label();
         
         button.setOnAction(event -> outputBox.setText(inputBox.getText()));
-
         
         VBox layout = new VBox();
         layout.getChildren().addAll(inputBox, button, outputBox);
-        
         
         Scene view = new Scene(layout);   
         
