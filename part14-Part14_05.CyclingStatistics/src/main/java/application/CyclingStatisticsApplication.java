@@ -6,7 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
+import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -36,23 +36,24 @@ public class CyclingStatisticsApplication extends Application {
         ListView<String> list = new ListView<>(data);
         gridPane.add(list, 0, 1);
 
+        // Create axes for BarChart
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
-        xAxis.setLabel("Year / Month");
+        xAxis.setLabel("Month");
         yAxis.setLabel("Cyclists");
 
-        
-        LineChart<String, Number> chart = new LineChart<>(xAxis, yAxis);
+        // Create BarChart
+        BarChart<String, Number> chart = new BarChart<>(xAxis, yAxis);
         chart.setLegendVisible(false);
 
         list.setOnMouseClicked((MouseEvent event) -> {
             String chosen = list.getSelectionModel().getSelectedItem();
             Map<String, Integer> values = statistics.monthlyCyclists(chosen);
             chart.getData().clear();
-            XYChart.Series chartData = new XYChart.Series();
+            XYChart.Series<String, Number> chartData = new XYChart.Series<>();
 
-            values.keySet().stream().forEach(time -> {
-                chartData.getData().add(new XYChart.Data(time, values.get(time)));
+            values.forEach((time, count) -> {
+                chartData.getData().add(new XYChart.Data<>(time, count));
             });
 
             chart.getData().add(chartData);
